@@ -3,7 +3,7 @@ appartient(X, [_ , Y|L]) :- appartient(X, [Y|L]).
 
 premier(X, [X|_]).
 
-dernier(X, [X]) :- X.
+dernier(X, [X]).
 dernier(X, [_, Y|L]) :- dernier(X, [Y|L]).
 
 avantdernier(X, [X, _]).
@@ -46,6 +46,9 @@ present2fois(X, [Y|L]) :- present2fois(X, L).
 concat([], L2, L2).
 concat([X|L1], L2, [X|L3]) :- concat(L1, L2, L3).
 
-palindrome([X]).
 palindrome([]).
-palindrome([Y, L, Y]) :- palindrome(L).
+palindrome([_]).
+palindrome([X, Y|L]) :- dernier(X, [Y|L]),
+    longueur([Y|L], K),
+    supprimerK(K, [Y|L], L2),
+    palindrome(L2).
