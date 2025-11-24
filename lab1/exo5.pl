@@ -11,3 +11,13 @@ min([X, _|_], X).
 
 supp_occ_1(X, [X|L], L) :- !.
 supp_occ_1(X, [Y|L1], [Y|L2]) :- supp_occ_1(X, L1, L2).
+
+tri_ins([X], [X]) :- !.
+tri_ins([X|L1], L2) :- tri_ins(L1, L3),
+    inserer(X, L3, L2).
+
+inserer(X, [], [X]).
+inserer(X, [Y|L1], [X, Y|L1]) :- X =< Y,
+    !.
+inserer(X, [Y|L1], [Y|L2]) :- inserer(X, L1, L2).
+
