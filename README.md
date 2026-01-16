@@ -1,4 +1,4 @@
-# Prolog CSP Labs - Complete Revision Guide & Cheatsheet
+# Prolog CSP Labs 
 
 ## Quick Start
 ```bash
